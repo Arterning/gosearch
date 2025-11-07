@@ -25,7 +25,7 @@ go mod download
 ### 直接运行
 
 ```bash
-go run main.go document.go index.go storage.go ranking.go engine.go api.go tokenizer.go filter.go [command]
+go run . document.go index.go storage.go ranking.go engine.go api.go tokenizer.go filter.go [command]
 ```
 
 ## 📚 命令行使用
@@ -34,19 +34,19 @@ go run main.go document.go index.go storage.go ranking.go engine.go api.go token
 
 ```bash
 # 默认启动（127.0.0.1:3000）
-go run *.go serve
+go run . serve
 
 # 自定义主机和端口
-go run *.go serve --host 0.0.0.0 --port 8080
+go run . serve --host 0.0.0.0 --port 8080
 
 # 指定数据目录
-go run *.go serve --data-dir ./my_data.db
+go run . serve --data-dir ./my_data.db
 ```
 
 ### 插入文档
 
 ```bash
-go run *.go insert \
+go run . insert \
   --id "doc1" \
   --title "Go Programming" \
   --content "Go is a simple and efficient programming language" \
@@ -57,34 +57,34 @@ go run *.go insert \
 
 ```bash
 # 基本搜索
-go run *.go search --query "programming language"
+go run . search --query "programming language"
 
 # 指定返回数量
-go run *.go search --query "go" --limit 5
+go run . search --query "go" --limit 5
 
 # OR 搜索
-go run *.go search --query "go rust python" --mode or
+go run . search --query "go rust python" --mode or
 
 # 不使用排序
-go run *.go search --query "programming" --ranked=false
+go run . search --query "programming" --ranked=false
 ```
 
 ### 获取文档
 
 ```bash
-go run *.go get --id "doc1"
+go run . get --id "doc1"
 ```
 
 ### 删除文档
 
 ```bash
-go run *.go delete --id "doc1"
+go run . delete --id "doc1"
 ```
 
 ### 查看统计
 
 ```bash
-go run *.go stats
+go run . stats
 ```
 
 ## 🌐 HTTP API 使用
@@ -223,7 +223,7 @@ go test ./...
 
 # 快速测试流程
 # 1. 启动服务器
-go run *.go serve &
+go run . serve &
 
 # 2. 插入测试文档
 curl -X POST http://localhost:3000/documents \
